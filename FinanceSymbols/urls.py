@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
+from symbolsapp import views
 
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^symbolsapp/', include('symbolsapp.urls')),
                        url(r'^search/', include('haystack.urls')),
+                       url(r'^yahoo/', views.yahoo),
                        )
 

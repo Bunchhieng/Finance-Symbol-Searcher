@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'symbolsapp/index.html' %}
 
-</body>
-</html>
+{% block data %}
+<form action="search/search.html">
+    <input id="field" name="field" type="text"/>
+
+    <div id="delete"><span id="x">x</span></div>
+    <input id="search" name="submit" type="submit" value="Search"/>
+</form>
+{% if Data %}
+<ol>
+    <h1>Yahoo</h1>
+    <!--
+    {'Volume': '28736000', 'Close': '35.83', 'High': '35.89', 'Open': '34.37', 'Date': '2014-04-29', 'Adj_Close': '35.83', 'Symbol': 'YHOO', 'Low': '34.12'}
+    -->
+    {% for data in Data %}
+    <div class="container">
+        {{ data.Date }} {{ data.Volume }} {{ data.Close }} {{ data.High }} {{ data.Low }} {{ data.Open }}
+        {{data.Adj_Close }}
+    </div>
+    {% endfor %}
+</ol>
+{% else %}
+<strong>Data is not available.</strong>
+{% endif %}
+{% endblock %}

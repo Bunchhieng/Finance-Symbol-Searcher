@@ -13,30 +13,28 @@
 </head>
 <body>
 <div id="container">
-    <div id="tipue_search_content"></div>
-    {% block content %}
-    {% endblock %}
     <h1 id="appname">Financial Symbols</h1>
+    {% block data %}
+        <div id="searchContainer">
+            <form action="">
+                <input id="field" name="field" type="text"/>
 
-    <div id="searchContainer">
-        <form>
-            <input id="field" name="field" type="text"/>
-
-            <div id="delete"><span id="x">x</span></div>
-            <input id="search" name="submit" type="submit" value="Search"/>
-        </form>
-    </div>
-    <div id="search-result">
-        {% if Symbols %}
-        <ol>
-            {% for symbol in Symbols %}
-            <li><a href="#">{{ symbol.symbol}} - {{ symbol.ticker }}</a></li>
-            {% endfor %}
-        </ol>
-        {% else %}
-        <strong>There are no categories present</strong>
-        {% endif %}
-    </div>
+                <div id="delete"><span id="x">x</span></div>
+                <input id="search" name="submit" type="submit" value="Search"/>
+            </form>
+        </div>
+        <div id="search-result">
+            {% if Symbols %}
+            <ol>
+                {% for symbol in Symbols %}
+                <li><a href="http://finance.yahoo.com/q/is?s={{ symbol.symbol }}+Income+Statement&annual">{{ symbol.symbol}} - {{ symbol.ticker }}</a></li>
+                {% endfor %}
+            </ol>
+            {% else %}
+            <strong>There are no categories present</strong>
+            {% endif %}
+        </div>
+    {% endblock %}
 </div>
 </body>
 </html>
